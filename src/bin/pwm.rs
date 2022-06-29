@@ -5,26 +5,16 @@ use cortex_m_rt::entry;
 use rtt_target::{rprintln, rtt_init_print};
 use panic_rtt_target as _;
 
-use microbit::hal::{Saadc, Timer};
-use microbit::hal::saadc::SaadcConfig;
-use microbit::hal::pac::Peripherals;
-use microbit::hal::gpio;
-use heapless::Vec;
-use microbit::hal::gpio::Level;
-
-
+use microbit::hal::{pac::Peripherals, Timer, gpio, pwm, gpio::Level};
 use microbit::hal::prelude::*;
-
-mod serial_setup;
-use serial_setup::UartePort;
-
-use microbit::hal::pwm;
 use microbit::hal::time::Hertz;
 
 
 #[entry]
 fn main() -> ! {
     rtt_init_print!();
+
+    // Get ownership of peripherals
     let board = Peripherals::take().expect("Couldn't initialize board.");
 
     // Configuring output pin
