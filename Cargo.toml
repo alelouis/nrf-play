@@ -16,6 +16,7 @@ panic-rtt-target = { version = "0.1.2", features = ["cortex-m"] }
 nb = "1.0.0"
 heapless = "0.7.10"
 embedded-hal = "0.2.6"
+mcp4725 = "0.4.2"
 
 [features]
 v2 = ["microbit-v2"]
